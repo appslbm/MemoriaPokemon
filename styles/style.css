@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Righteous", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(34, 31, 31);
+  width: 100%;
+}
+
+.card {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card_front,
+.card_back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
+  backface-visibility: hidden;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.card_front {
+  transform: rotateY(180deg);
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.card_back {
+  background-color: white;
+}
+
+#gameOver {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-size: 50px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 0;
+}
+
+#restart {
+  padding: 20px;
+  font-size: 20px;
+  background-color: rgba(255, 255, 0, 0.5);
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#gameBoard {
+  max-width: 700px;
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 85px;
+  justify-content: center;
+  align-items: center;
+}
+
+#gamePlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 50px;
+  top: 0;
+  z-index: 100;
+}
+
+button {
+  padding: 20px;
+  font-size: 20px;
+  background-color: rgba(255, 255, 0, 0.5);
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  color: white;
+  position: absolute;
+  display: flex;
+}
+
+#imgInicial,
+#imgGameover,
+#imgGame,
+#fraseOver {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  display: flex;
+}
+
+#start:hover,
+#restart:hover {
+  background-color: yellow;
+  color: black;
+}
+
+#audio {
+  position: fixed;
+  bottom: 3rem;
+  width: 16rem;
+  height: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.1rem 0.6rem #00000009;
+  margin-bottom: -2.6rem;
+  z-index: 100;
+}
+
+@keyframes hvr-buzz {
+  50% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  100% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+.hvr-buzz {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.icon:hover {
+  -webkit-animation-name: hvr-buzz;
+  animation-name: hvr-buzz;
+  -webkit-animation-duration: 0.15s;
+  animation-duration: 0.15s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+audio::-webkit-media-controls-timeline {
+  display: inline-flex;
+}
+audio::-webkit-media-controls-panel {
+  background-color: rgba(0, 0, 0, 0.609);
+}
+
+@media only screen and (max-width: 700px) {
+  #gameBoard {
+    justify-content: center;
+    align-items: center;
+
+    grid-template: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .card {
+    width: 30px;
+    height: 30px;
+  }
+
+  .icon {
+    width: 70px;
+  }
+  .card_front,
+  .card_back {
+    border-radius: 10px;
+  }
+
+  #imgInicial,
+  #imgGameover,
+  #imgGame,
+  #fraseOver {
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
